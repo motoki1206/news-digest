@@ -1,0 +1,68 @@
+# RSSフィード一覧。運用しながら追加/削除してOK。
+# 各エントリ: name（表示名）、url（RSS/Atom）、category（digest セクション分類用）
+#   category の値: official | tools | japanese | community
+
+feeds:
+  # --- 公式ブログ / リリース ---
+  # 注: Anthropic は公式RSSを提供していない (2026-04 時点)。
+  #     毎朝の手順で CLAUDE.md の "補足取得" 節に従い、必要に応じて
+  #     https://www.anthropic.com/news を WebFetch で取得する。
+  - name: OpenAI News
+    url: https://openai.com/news/rss.xml
+    category: official
+
+  - name: GitHub Blog (AI & ML)
+    url: https://github.blog/ai-and-ml/feed/
+    category: official
+
+  - name: Claude Code Releases
+    url: https://github.com/anthropics/claude-code/releases.atom
+    category: tools
+
+  # --- コミュニティ / 技術ブログ (日本語) ---
+  - name: Zenn - Claude Code
+    url: https://zenn.dev/topics/claudecode/feed
+    category: japanese
+
+  - name: Zenn - Cursor
+    url: https://zenn.dev/topics/cursor/feed
+    category: japanese
+
+  - name: Zenn - GitHub Copilot
+    url: https://zenn.dev/topics/githubcopilot/feed
+    category: japanese
+
+  - name: Zenn - Anthropic
+    url: https://zenn.dev/topics/anthropic/feed
+    category: japanese
+
+  - name: Qiita - Claude Code
+    url: https://qiita.com/tags/claudecode/feed
+    category: japanese
+
+  - name: Qiita - Cursor
+    url: https://qiita.com/tags/cursor/feed
+    category: japanese
+
+  # --- コミュニティ (英語) ---
+  - name: Hacker News - Claude Code
+    url: https://hnrss.org/newest?q=%22claude+code%22
+    category: community
+
+  - name: Hacker News - Cursor
+    url: https://hnrss.org/newest?q=cursor&points=30
+    category: community
+
+  - name: Hacker News - AI coding
+    url: https://hnrss.org/newest?q=ai+coding&points=20
+    category: community
+
+# 取得設定
+settings:
+  # 過去何時間分のエントリを拾うか（月曜は週末分もカバーするため倍にする）
+  lookback_hours_weekday: 30
+  lookback_hours_monday: 66
+  # 1フィード当たりのタイムアウト（秒）
+  fetch_timeout: 10
+  # 並列取得の同時数
+  max_workers: 8

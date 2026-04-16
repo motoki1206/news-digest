@@ -1,0 +1,186 @@
+/* モバイルファースト。max-width 720px で中央寄せ、本文 18px */
+
+:root {
+  --bg: #f8f7f4;
+  --surface: #ffffff;
+  --text: #1d1d1f;
+  --text-muted: #6b6b70;
+  --accent: #c9511c;
+  --border: #e7e5df;
+  --code-bg: #f1efe9;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16171a;
+    --surface: #1f2024;
+    --text: #ececec;
+    --text-muted: #9a9aa0;
+    --accent: #ff8b5a;
+    --border: #2d2e33;
+    --code-bg: #26272c;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 18px 80px;
+}
+
+header.site {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+header.site h1 {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+header.site .date {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.lede {
+  color: var(--text-muted);
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+
+section.block {
+  margin: 32px 0;
+}
+
+section.block > h2 {
+  font-size: 18px;
+  margin: 0 0 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+section.block > h2 .count {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+article.item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 16px 14px;
+  margin-bottom: 12px;
+}
+
+article.item h3 {
+  font-size: 16px;
+  margin: 0 0 6px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+article.item h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+article.item h3 a:active,
+article.item h3 a:hover {
+  color: var(--accent);
+}
+
+article.item .meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+article.item .meta .source {
+  font-weight: 600;
+}
+
+article.item p.body {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+article.item.pick {
+  border-left: 3px solid var(--accent);
+}
+
+article.item.pick .pick-note {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+footer.site {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer.site a { color: var(--text-muted); }
+
+a { color: var(--accent); }
+a:active { opacity: 0.7; }
+
+/* アーカイブ一覧ページ */
+ul.archive-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.archive-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+}
+ul.archive-list li a {
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+ul.archive-list li a:active { color: var(--accent); }

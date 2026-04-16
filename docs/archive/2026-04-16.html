@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#c9511c" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16171a" media="(prefers-color-scheme: dark)">
+<title>2026-04-16 の AI開発ダイジェスト</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="container">
+
+<header class="site">
+  <h1>AI開発ダイジェスト</h1>
+  <div class="date">2026年4月16日 (木)</div>
+</header>
+
+<p class="lede">本日は Claude Code v2.1.110 のリリース（新 <code>/tui</code>・<code>/focus</code>・モバイルプッシュ通知）と、公式ブログの「セッション管理と 1M コンテキスト」運用解説が中心。Claude Code を夜間に自走させる実運用事例や、Routines・Desktop 再設計、Agent teams と Subagent の比較、セキュリティ・AGENTS.md 設計ガイドなど、「どう運用するか」の記事が揃った日。</p>
+
+<section class="block">
+  <h2>📣 トップピック <span class="count">3</span></h2>
+
+  <article class="item pick">
+    <div class="pick-note">▶ 公式の最新版。新しい <code>/tui</code> と <code>/focus</code>、そしてモバイル通知。</div>
+    <h3><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.110" target="_blank" rel="noopener">Claude Code v2.1.110 リリース</a></h3>
+    <div class="meta"><span class="source">Claude Code Releases</span><span>04/15 23:21</span></div>
+    <p class="body">フルスクリーンでチラつきの無い描画に切り替える <code>/tui</code> コマンドと <code>tui</code> 設定を追加。Ctrl+O は「通常/詳細ログの切替」専用になり、フォーカス表示は新設の <code>/focus</code> に分離。Remote Control 有効時、Claude がモバイルへプッシュ通知を送る push notification tool も登場。</p>
+  </article>
+
+  <article class="item pick">
+    <div class="pick-note">▶ 長尺セッションの詰まりを公式がどう設計で解くか。</div>
+    <h3><a href="https://claude.com/blog/using-claude-code-session-management-and-1m-context" target="_blank" rel="noopener">Using Claude Code: session management and 1M context</a></h3>
+    <div class="meta"><span class="source">claude.com/blog (HN経由)</span><span>04/16 10:17</span></div>
+    <p class="body">Claude Code で長いセッションを回すときの実践論。1M コンテキストが使えるようになった現在、どこでコンテキストを圧縮し、どこでセッションを切るか、どんな兆候で詰まりに気づくか、公式視点のガイダンス。HN でも話題に。</p>
+  </article>
+
+  <article class="item pick">
+    <div class="pick-note">▶ 自分で定期ジョブを組む人にそのまま効く、夜間自走の設計記事。</div>
+    <h3><a href="https://zenn.dev/pepabo/articles/claude-code-night-autopilot-kanban-loop" target="_blank" rel="noopener">Claude Code を夜間に走らせ、朝カンバンで拾う — 自走パイプラインの入口と出口</a></h3>
+    <div class="meta"><span class="source">Zenn (GMOペパボ)</span><span>04/15 22:46</span></div>
+    <p class="body">夜間に Claude Code に PR レビューや issue トリアージを自走させるとき、「朝どうやって人間の手に戻すか」の設計が本題になる、という主張。入口（タスク投入）と出口（成果物のカンバン取り込み）を対にして運用する実例が中心。</p>
+  </article>
+</section>
+
+<section class="block">
+  <h2>🤖 Claude / Anthropic <span class="count">3</span></h2>
+
+  <article class="item">
+    <h3><a href="https://claude.com/blog/introducing-routines-in-claude-code" target="_blank" rel="noopener">Routines in Claude Code</a></h3>
+    <div class="meta"><span class="source">claude.com/blog (HN経由)</span><span>04/16 05:19</span></div>
+    <p class="body">Claude Code に「ルーティン」という新機能が登場。繰り返し実行する手順をテンプレ化して呼び出せる仕組みで、定型タスクの自動化・共有に使えそう。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://zenn.dev/galirage/articles/claude-mythos-preview" target="_blank" rel="noopener">Anthropic が発表した新モデル「Claude Mythos」を徹底解説</a></h3>
+    <div class="meta"><span class="source">Zenn (Galirage)</span><span>04/15 18:15</span></div>
+    <p class="body">4月7日に発表された Claude Mythos Preview の解説。Opus の上位に位置付けられる最強モデルだが、Anthropic は安全上の理由から一般公開しない異例の判断。Project Glasswing の全体像を公開情報ベースで整理。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://www.macrumors.com/2026/04/15/anthropic-rebuilds-claude-code-desktop-app/" target="_blank" rel="noopener">Anthropic Rebuilds Claude Code Desktop App Around Parallel Sessions</a></h3>
+    <div class="meta"><span class="source">MacRumors (HN経由)</span><span>04/15 18:04</span></div>
+    <p class="body">Claude Code のデスクトップアプリが刷新。並列セッションをドラッグ＆ドロップで配置できるレイアウトに。「1人1チャット」から「複数AI作業の監督」へと使い方のフェーズが変わる、という評。</p>
+  </article>
+</section>
+
+<section class="block">
+  <h2>🛠️ AI開発ツール <span class="count">4</span></h2>
+
+  <article class="item">
+    <h3><a href="https://zenn.dev/program_kitchen/articles/github_copilot_cli" target="_blank" rel="noopener">GitHub Copilot CLI を使いこなす：ターミナルから始める次世代開発ワークフロー</a></h3>
+    <div class="meta"><span class="source">Zenn</span><span>04/16 02:59</span></div>
+    <p class="body">GitHub Copilot CLI を「コマンドセンター」として使う勉強会の要点。基本設定から Web エージェントへの委任デモまで、運用ポイントを整理。Claude Code と並行して触っている人の比較材料に。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://zenn.dev/gk3/articles/20260415-github-copilot-agentsmd-10" target="_blank" rel="noopener">GitHub Copilot の提案がズレる本当の理由 ― AGENTS.md 設計10パターン</a></h3>
+    <div class="meta"><span class="source">Zenn</span><span>04/16 03:39</span></div>
+    <p class="body">Copilot の提案精度が低い原因を AGENTS.md / copilot-instructions.md の書き方に帰結させ、実務 SE 向けに 10 個の設計パターンを提示。Claude Code の CLAUDE.md 設計とも通じる内容。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://qiita.com/taketsuyo/items/fc4b8f8e1038b4e14aa4" target="_blank" rel="noopener">Cursor の新しい Canvas、正直かなり効く</a></h3>
+    <div class="meta"><span class="source">Qiita</span><span>04/16 03:34</span></div>
+    <p class="body">Cursor の Canvas 機能を「見た目が派手になっただけ」と流しかけた筆者が、実際の使いどころを想像して評価を一変させた記事。AI の出力が「文章」から「使う画面」に変わるという捉え方。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://qiita.com/startdevin/items/2936281fc93cce463318" target="_blank" rel="noopener">Devin の料金プランが大幅に変更（2026年4月14日発表）</a></h3>
+    <div class="meta"><span class="source">Qiita</span><span>04/16 12:20</span></div>
+    <p class="body">旧 Teams プラン月500ドル（年90万円近い）がネックで導入を見送っていたチーム向け。新 Teams は月80ドル〜に大幅値下げ。比較・試算付き。</p>
+  </article>
+</section>
+
+<section class="block">
+  <h2>📚 技術Tips・事例 <span class="count">5</span></h2>
+
+  <article class="item">
+    <h3><a href="https://zenn.dev/joinclass/articles/claude-md-design-guide-2026" target="_blank" rel="noopener">CLAUDE.md の書き方ガイド 2026 — AIエージェントを思い通りに動かす設定ファイル</a></h3>
+    <div class="meta"><span class="source">Zenn</span><span>04/15 23:00</span></div>
+    <p class="body">プロジェクトごとに繰り返している口頭の指示（言語、テスト、コミット規約）を CLAUDE.md に落とし込む設計ガイド。基本構成から 2026 年版の書き方まで。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://zenn.dev/okikusan/articles/35b08599c82bb2" target="_blank" rel="noopener">【2026年版】Claude Code を安全に使うための実践ガイド</a></h3>
+    <div class="meta"><span class="source">Zenn</span><span>04/15 23:09</span></div>
+    <p class="body">プロンプトインジェクション対策からエンタープライズ展開まで。具体的な攻撃シナリオ、個人向けサンドボックス設定（15分）、企業向け MDM 強制と実行環境のコスト比較。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://zenn.dev/ryonakae/articles/338f63fb030267" target="_blank" rel="noopener">AGENTS.md をベストプラクティスに沿って自動更新する自作スキルと hook 設定</a></h3>
+    <div class="meta"><span class="source">Zenn</span><span>04/15 15:37</span></div>
+    <p class="body">放っておくと長くなり、実装とズレる AGENTS.md を、スキル2つと Claude Code の Stop Hook だけで自動更新する仕組み。Claude Code のフック機能の実用例として参考に。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://zenn.dev/chiakidayo/articles/agent-teams-subagent-comparison" target="_blank" rel="noopener">【Claude Code】Agent teams と Subagent 並列実行 比較メモ</a></h3>
+    <div class="meta"><span class="source">Zenn</span><span>04/15 19:19</span></div>
+    <p class="body">Agent teams（複数Agentをチーム化、メンバー間で相互コミュニケーション）と Subagent 並列実行（タスク分割）の違いを実例で整理。「どちらを使うか」の判断基準。</p>
+  </article>
+
+  <article class="item">
+    <h3><a href="https://zenn.dev/xujfcn/articles/claude-api-cheap-guide-2026" target="_blank" rel="noopener">【2026年】Claude API を最安で使う方法：サブスク不要で40%以上節約</a></h3>
+    <div class="meta"><span class="source">Zenn</span><span>04/15 18:44</span></div>
+    <p class="body">Opus 4 の入力 $15 / 出力 $75 が重いと感じるユーザー向けに、サブスクなしで安く使う 5 つの方法（プロンプトキャッシュ、バッチ、モデル選択、等）。料金テーブル付き。</p>
+  </article>
+</section>
+
+<footer class="site">
+  <span>生成: 2026-04-16 21:30 JST</span>
+  <a href="./">過去のダイジェスト →</a>
+</footer>
+
+</div>
+</body>
+</html>
